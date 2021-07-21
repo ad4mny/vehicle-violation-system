@@ -9,4 +9,7 @@ class Login_Controller extends CI_Controller {
 		$this->load->view('users/Login_View');
 		$this->load->view('fragments/Footer');
 	}
+
+
+	
 }
