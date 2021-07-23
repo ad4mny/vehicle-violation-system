@@ -5,7 +5,8 @@ class Report_Controller extends CI_Controller
 {
     public function __construct()
     {
-        $this->model->load('Report_Model');
+        parent::__construct();
+        $this->load->model('Report_Model');
     }
 
     public function index($page = null, $id = null)

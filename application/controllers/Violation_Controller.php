@@ -5,7 +5,8 @@ class Violation_Controller extends CI_Controller
 {
     public function __construct()
     {
-        $this->model->load('Violation_Model');
+        parent::__construct();
+        $this->load->model('Violation_Model');
     }
 
     public function index($page = null, $id = null)
