@@ -22,8 +22,9 @@ class Sticker_Controller extends CI_Controller
             $data['sticker_data'] = $this->view_sticker($id);
             $this->load->view('users/Sticker_View', $data);
         } else if ($page === 'update') {
+            $data['user_data'] = $this->fetch_profile();
             $data['sticker_data'] = $this->view_sticker($id);
-            $this->load->view('users/Sticker_View', $data);
+            $this->load->view('users/Update_Application_Form', $data);
         } else {
             $data['sticker_list'] = $this->view_sticker_list();
             $this->load->view('users/Sticker_List_View', $data);
@@ -75,12 +76,44 @@ class Sticker_Controller extends CI_Controller
 
     public function update_sticker()
     {
-        return 0;
+        $vehicle_id = $this->input->post('vehicle_id');
+        $type = $this->input->post('type');
+        $brand = $this->input->post('brand');
+        $reg = $this->input->post('reg');
+        $colour = $this->input->post('colour');
+        $tax_date = $this->input->post('tax_date');
+        $licence_date = $this->input->post('licence_date');
+        $licence_no = $this->input->post('licence_no');
+        $licence_class = $this->input->post('licence_class');
+
+        $config['upload_path'] = './assets/upload/vehicle-grant';
+        $config['allowed_types'] = 'jpeg|jpg';
+        $config['max_size'] = '0';
+
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('grant')) {
+
+            $this->session->set_tempdata('error', $this->upload->display_errors('', ''), 1);
+        } else {
+
+            $grant = $this->upload->data('file_name');
+
+            if ($this->Sticker_Model->update_sticker_model($vehicle_id, $type, $brand, $reg, $colour, $tax_date, $licence_date, $licence_no, $licence_class, $grant) !== false) {
+
+                $this->session->set_tempdata('notice', 'Your sticker application has been updated succesfully.', 1);
+            } else {
+
+                $this->session->set_tempdata('error', 'Failed to update your sticker applciations.', 1);
+            }
+        }
+
+        redirect(base_url() . 'sticker');
     }
 
     public function view_sticker($id)
     {
-        return 0;
+        return $this->Sticker_Model->view_sticker_model($id);
     }
 
     public function view_sticker_list()

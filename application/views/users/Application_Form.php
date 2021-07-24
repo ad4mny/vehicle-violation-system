@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group pb-2">
                         <small>Licence's Class</small>
-                        <select class="form-select" name="licence_type" required>
+                        <select class="form-select" name="licence_class" required>
                             <option value="B">B</option>
                             <option value="B2">B2</option>
                             <option value="C">C</option>
