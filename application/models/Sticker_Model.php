@@ -72,11 +72,11 @@ class Sticker_Model extends CI_Model
         $data = $this->db->get()->row_array();
 
         if ($data['vehicleStickerPath'] !== NULL) {
-            unlink(base_url() . 'assets/upload/vehicle-sticker/' . $data['vehicleStickerPath']);
+            unlink('./assets/upload/vehicle-sticker/' . $data['vehicleStickerPath']);
         }
 
         if ($data['vehicleGrant'] !== NULL) {
-            unlink(base_url() . 'assets/upload/vehicle-grant/' . $data['vehicleGrant']);
+            unlink('./assets/upload/vehicle-grant/' . $data['vehicleGrant']);
         }
 
         $this->db->where('vehicleID', $id);
