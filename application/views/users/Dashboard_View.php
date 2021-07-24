@@ -1,4 +1,4 @@
-<div class="container m-3 pb-5">
+<div class="container px-4 py-2">
     <div class="row my-3">
         <div class="col">
             <h1 class="display-4">Dashboard</h1>
