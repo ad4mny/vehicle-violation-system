@@ -16,18 +16,27 @@ class Sticker_Controller extends CI_Controller
         $this->load->view('templates/Navigation');
 
         if ($page === 'apply') {
+            
             $data['user_data'] = $this->fetch_profile();
             $this->load->view('users/Application_Form', $data);
+
         } else if ($page === 'view') {
+
+            $data['user_data'] = $this->fetch_profile();
             $data['sticker_data'] = $this->view_sticker($id);
             $this->load->view('users/Sticker_View', $data);
+
         } else if ($page === 'update') {
+
             $data['user_data'] = $this->fetch_profile();
             $data['sticker_data'] = $this->view_sticker($id);
             $this->load->view('users/Update_Application_Form', $data);
+
         } else {
+
             $data['sticker_list'] = $this->view_sticker_list();
             $this->load->view('users/Sticker_List_View', $data);
+
         }
 
         $this->load->view('templates/Footer');
@@ -53,6 +62,7 @@ class Sticker_Controller extends CI_Controller
         if (!$this->upload->do_upload('grant')) {
 
             $this->session->set_tempdata('error', $this->upload->display_errors('', ''), 1);
+            redirect(base_url() . 'sticker/apply');
         } else {
 
             $grant = $this->upload->data('file_name');
@@ -64,9 +74,8 @@ class Sticker_Controller extends CI_Controller
 
                 $this->session->set_tempdata('error', 'Failed to submit your sticker applciations.', 1);
             }
+            redirect(base_url() . 'sticker');
         }
-
-        redirect(base_url() . 'sticker/apply');
     }
 
     public function update_sticker()
