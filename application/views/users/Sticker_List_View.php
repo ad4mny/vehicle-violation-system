@@ -31,34 +31,38 @@
                     <?php if (isset($sticker_list) && is_array($sticker_list) && !empty($sticker_list) && $sticker_list !== false) {
                         $i = 0;
                         foreach ($sticker_list as $list) { ?>
-                            <tr>
+                            <tr class="text-uppercase ">
                                 <td><?php echo ++$i; ?></td>
-                                <td><?php echo $row["vd_reg_no"]; ?> <small class="text-muted"><?php echo $row["vd_brand"]; ?></small></td>
-                                <td><?php echo $row["rd_apply_date"]; ?> </td>
+                                <td>
+                                    <?php echo $list["vehicleRegistrationNo"]; ?>
+                                    <small class="text-muted"><?php echo $list["vehicleBrand"]; ?></small>
+                                </td>
+                                <td><?php echo $list["date"]; ?> </td>
                                 <td>
                                     <?php
-                                    if ($row["rd_apply_status"] == 'Reject') {
-                                        echo '<div class="text-danger">' . $row["rd_apply_status"] . '</div>';
-                                        echo '<div class="text-muted"><small>' . $row["rd_comment"] . '</small></div>';
-                                    } else if ($row["rd_apply_status"] == 'Incomplete') {
-                                        echo '<div class="text-info">' . $row["rd_apply_status"] . '</div>';
-                                        echo '<div class="text-muted"><small>' . $row["rd_comment"] . '</small></div>';
-                                    } else if ($row["rd_apply_status"] == 'Approve') {
-                                        echo '<div class="text-success">' . $row["rd_apply_status"] . '</div>';
+                                    if ($list["status"] == 'Reject') {
+                                        echo '<div class="text-danger">' . $list["status"] . '</div>';
+                                        echo '<div class="text-muted"><small>' . $list["comment"] . '</small></div>';
+                                    } else if ($list["status"] == 'Incomplete') {
+                                        echo '<div class="text-info">' . $list["status"] . '</div>';
+                                        echo '<div class="text-muted"><small>' . $list["comment"] . '</small></div>';
+                                    } else if ($list["status"] == 'Approve') {
+                                        echo '<div class="text-success">' . $list["status"] . '</div>';
+                                        echo '<div class="text-muted"><small>' . $list["comment"] . '</small></div>';
                                     } else {
-                                        echo '<div class="text-info">' . $row["rd_apply_status"] . '</div>';
+                                        echo '<div class="text-muted">' . $list["status"] . '</div>';
                                     }
                                     ?>
 
                                 </td>
                                 <td>
                                     <?php
-                                    if ($row["rd_apply_status"] != 'Approve') {
-                                        echo '<a href="apply?act=update&id=' . $row['vd_id'] . '">Update</a><br>';
-                                        echo '<a href="view?id=' . $row['vd_id'] . '">View</a><br>';
-                                        echo '<a href="apply?act=delete&id=' . $row['vd_id'] . '">Delete</a><br>';
+                                    if ($list["status"] != 'Approve') {
+                                        echo '<a href="' . base_url() . 'sticker/update/' . $list['vehicleID'] . '" class="btn btn-warning btn-sm me-1"><i class="fas fa-edit fa-fw fa-sm"></i></a>';
+                                        echo '<a href="' . base_url() . 'sticker/view/' . $list['vehicleID'] . '" class="btn btn-primary btn-sm me-1"><i class="fas fa-eye fa-fw fa-sm"></i></a>';
+                                        echo '<a href="' . base_url() . 'sticker/delete/' . $list['vehicleID'] . '" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-fw fa-sm"></i></a>';
                                     } else {
-                                        echo '<a href="system/action?id=' . $row['vd_id'] . '&data=download">Download Sticker</a><br>';
+                                        echo '<a href="' . base_url() . 'sticker/download/' . $list['vehicleID'] . '" class="btn btn-info btn-sm"><i class="fas fa-download fa-fw fa-sm"></i></a>';
                                     }
                                     ?>
                                 </td>
