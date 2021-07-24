@@ -86,6 +86,9 @@
                     <div class="col-12 text-center py-3">
                         <div class="form-group">
                             <input type="hidden" name="vehicle_id" value="<?php echo $sticker_data['vehicleID']; ?>">
+                            <a href="<?php echo base_url() . 'sticker/apply/delete/' . $sticker_data['vehicleID']; ?>" class="btn btn-danger">
+                                <i class="fas fa-trash fa-fw fa-xs"></i> Delete Sticker
+                            </a>
                             <button type="submit" class="btn btn-primary" name="submit">
                                 <i class="fas fa-chevron-right fa-fw fa-xs"></i> Confirm Details & Update Sticker
                             </button>

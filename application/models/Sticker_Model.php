@@ -32,11 +32,6 @@ class Sticker_Model extends CI_Model
         }
     }
 
-    public function delete_sticker_model()
-    {
-        return 0;
-    }
-
     public function update_sticker_model($vehicle_id, $type, $brand, $reg, $colour, $tax_date, $licence_date, $licence_no, $licence_class, $grant)
     {
         $data = array(
@@ -65,6 +60,27 @@ class Sticker_Model extends CI_Model
         } else {
             return false;
         }
+    }
+
+    public function delete_sticker_model($id)
+    {
+        $this->db->select('*');
+        $this->db->from('vehicles');
+        $this->db->join('applications', 'applications.vehicleID = vehicles.vehicleID');
+        $this->db->where('userID', $_SESSION['userid']);
+        $this->db->where('vehicles.vehicleID', $id);
+        $data = $this->db->get()->row_array();
+
+        if ($data['vehicleStickerPath'] !== NULL) {
+            unlink(base_url() . 'assets/upload/vehicle-sticker/' . $data['vehicleStickerPath']);
+        }
+
+        if ($data['vehicleGrant'] !== NULL) {
+            unlink(base_url() . 'assets/upload/vehicle-grant/' . $data['vehicleGrant']);
+        }
+
+        $this->db->where('vehicleID', $id);
+        return $this->db->delete('vehicles');
     }
 
     public function view_sticker_model($id)

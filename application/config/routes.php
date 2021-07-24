@@ -13,5 +13,6 @@ $route['sticker/(:any)'] = 'Sticker_Controller/index/$1';
 $route['sticker/(:any)/(:num)'] = 'Sticker_Controller/index/$1/$2';
 $route['sticker/apply/submit'] = 'Sticker_Controller/apply_sticker';
 $route['sticker/apply/update'] = 'Sticker_Controller/update_sticker';
+$route['sticker/apply/delete/(:num)'] = 'Sticker_Controller/delete_sticker/$1';
 $route['violation'] = 'Violation_Controller/index';
 $route['report'] = 'Report_Controller/index';

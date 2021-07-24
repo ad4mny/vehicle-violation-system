@@ -60,7 +60,7 @@
                                     if ($list["status"] != 'Approve') {
                                         echo '<a href="' . base_url() . 'sticker/update/' . $list['vehicleID'] . '" class="btn btn-warning btn-sm me-1"><i class="fas fa-edit fa-fw fa-sm"></i></a>';
                                         echo '<a href="' . base_url() . 'sticker/view/' . $list['vehicleID'] . '" class="btn btn-primary btn-sm me-1"><i class="fas fa-eye fa-fw fa-sm"></i></a>';
-                                        echo '<a href="' . base_url() . 'sticker/delete/' . $list['vehicleID'] . '" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-fw fa-sm"></i></a>';
+                                        echo '<a href="' . base_url() . 'sticker/apply/delete/' . $list['vehicleID'] . '" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-fw fa-sm"></i></a>';
                                     } else {
                                         echo '<a href="' . base_url() . 'sticker/download/' . $list['vehicleID'] . '" class="btn btn-info btn-sm"><i class="fas fa-download fa-fw fa-sm"></i></a>';
                                     }

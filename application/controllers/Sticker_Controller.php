@@ -69,11 +69,6 @@ class Sticker_Controller extends CI_Controller
         redirect(base_url() . 'sticker/apply');
     }
 
-    public function delete_sticker($id)
-    {
-        return 0;
-    }
-
     public function update_sticker()
     {
         $vehicle_id = $this->input->post('vehicle_id');
@@ -108,6 +103,17 @@ class Sticker_Controller extends CI_Controller
             }
         }
 
+        redirect(base_url() . 'sticker');
+    }
+
+    public function delete_sticker($id)
+    {
+        if ($this->Sticker_Model->delete_sticker_model($id) !== false) {
+
+            $this->session->set_tempdata('notice', 'Your sticker application has been deleted succesfully.', 1);
+        } else {
+            $this->session->set_tempdata('error', 'Failed to delete your sticker applciations.', 1);
+        }
         redirect(base_url() . 'sticker');
     }
 
