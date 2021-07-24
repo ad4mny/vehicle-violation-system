@@ -1,11 +1,14 @@
 <div class="d-flex" id="wrapper">
-    
+
     <div class="bg-white border-right shadow" id="sidebar-wrapper">
         <div class="sidebar-heading">
-            <h3 class="font-weight-bold">
-                SUVSS<br>
-                <small class="text-capitalize">Welcome.</small>
+            <h3 class="fw-bold">
+                Saman-On-The-Go
             </h3>
+            <p class="text-capitalize">Welcome,
+                <?php $nick = explode(' ', $_SESSION['name']);
+                echo $nick[0]; ?>.
+            </p>
         </div>
         <div class="list-group list-group-flush">
             <a href="<?php echo base_url(); ?>dashboard" class="list-group-item list-group-item-action <?php if ($this->uri->segment(1) == 'dashboard') echo 'active'; ?>">
