@@ -9,19 +9,16 @@
         </div>
         <div class="list-group list-group-flush">
             <a href="<?php echo base_url(); ?>dashboard" class="list-group-item list-group-item-action <?php if ($this->uri->segment(1) == 'dashboard') echo 'active'; ?>">
-                <i class="fas fa-chevron-right fa-fw fa-xs"></i> Dashboard
+                <i class="fas fa-columns fa-fw me-2"></i> Dashboard
             </a>
             <a href="<?php echo base_url(); ?>sticker" class="list-group-item list-group-item-action <?php if ($this->uri->segment(1) == 'sticker') echo 'active'; ?>">
-                <i class="fas fa-chevron-right fa-fw fa-xs"></i> Manage Sticker
+                <i class="fas fa-copy fa-fw me-2"></i> Manage Sticker
             </a>
             <a href="<?php echo base_url(); ?>violation" class="list-group-item list-group-item-action <?php if ($this->uri->segment(1) == 'violation') echo 'active'; ?>">
-                <i class="fas fa-chevron-right fa-fw fa-xs"></i> Manage Violation
-            </a>
-            <a href="<?php echo base_url(); ?>report" class="list-group-item list-group-item-action <?php if ($this->uri->segment(1) == 'report') echo 'active'; ?>">
-                <i class="fas fa-chevron-right fa-fw fa-xs"></i> Manage Report
+                <i class="fas fa-file-invoice-dollar fa-fw me-2"></i> Manage Violation
             </a>
             <a href="<?php echo base_url(); ?>logout" class="list-group-item list-group-item-action text-danger" onclick="return confirm('Logout?');">
-                <i class="fas fa-sign-out-alt fa-fw fa-xs"></i> Logout
+                <i class="fas fa-sign-out-alt fa-fw me-2"></i> Logout
             </a>
         </div>
     </div>
