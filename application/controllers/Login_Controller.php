@@ -12,7 +12,7 @@ class Login_Controller extends CI_Controller
 
 	public function index($page = 'login')
 	{
-		$this->load->view('templates/Header');
+		$this->load->view('users/templates/Header');
 
 		if ($page === 'register') {
 			$this->load->view('users/Register_View');
@@ -20,7 +20,7 @@ class Login_Controller extends CI_Controller
 			$this->load->view('users/Login_View');
 		}
 
-		$this->load->view('templates/Footer');
+		$this->load->view('users/templates/Footer');
 	}
 
 	public function login()

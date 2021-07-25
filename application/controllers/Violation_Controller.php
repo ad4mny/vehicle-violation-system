@@ -11,10 +11,10 @@ class Violation_Controller extends CI_Controller
 
     public function index($page = null, $id = null)
 	{
-		$this->load->view('templates/Header');
-		$this->load->view('templates/Navigation');
+		$this->load->view('users/templates/Header');
+		$this->load->view('users/templates/Navigation');
 		$this->load->view('users/Violation_List_View');
-		$this->load->view('templates/Footer');
+		$this->load->view('users/templates/Footer');
 	}
 
     public function pay_violation()
