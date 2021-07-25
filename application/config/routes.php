@@ -6,6 +6,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'Login_Controller/login';
+$route['register'] = 'Login_Controller/index/register';
+$route['register/submit'] = 'Login_Controller/registration';
 $route['logout'] = 'Login_Controller/logout';
 $route['dashboard'] = 'Dashboard_Controller/index';
 $route['sticker'] = 'Sticker_Controller/index';

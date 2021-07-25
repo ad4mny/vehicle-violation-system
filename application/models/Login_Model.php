@@ -12,8 +12,25 @@ class Login_Model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 
-	public function registration_model()
+	public function registration_model($username, $name, $status, $address, $phone, $password)
 	{
-		return 0;
+		$data = array(
+			'cardID' => $username,
+			'fullName' => $name,
+			'role' => $status,
+			'address' => $address,
+			'phone' => $phone,
+			'password' => $password
+		);
+
+		return $this->db->insert('users', $data);
+	}
+
+	public function check_username_availability_model($username)
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('cardID', $username);
+		return $this->db->get()->row_array();
 	}
 }
