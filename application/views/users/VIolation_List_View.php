@@ -20,46 +20,24 @@
                         <th>Demerit Point</th>
                         <th>Location</th>
                         <th>Datetime</th>
-                        <th>Action</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (isset($sticker_list) && is_array($sticker_list) && !empty($sticker_list) && $sticker_list !== false) {
+                    <?php if (isset($violation_list) && is_array($violation_list) && !empty($violation_list) && $violation_list !== false) {
                         $i = 0;
-                        foreach ($sticker_list as $list) { ?>
+                        foreach ($violation_list as $list) { ?>
                             <tr>
                                 <td><?php echo ++$i; ?></td>
-                                <td><?php echo $row["vd_reg_no"]; ?> <small class="text-muted"><?php echo $row["vd_brand"]; ?></small></td>
-                                <td><?php echo $row["rd_apply_date"]; ?> </td>
                                 <td>
-                                    <?php
-                                    if ($row["rd_apply_status"] == 'Reject') {
-                                        echo '<div class="text-danger">' . $row["rd_apply_status"] . '</div>';
-                                        echo '<div class="text-muted"><small>' . $row["rd_comment"] . '</small></div>';
-                                    } else if ($row["rd_apply_status"] == 'Incomplete') {
-                                        echo '<div class="text-info">' . $row["rd_apply_status"] . '</div>';
-                                        echo '<div class="text-muted"><small>' . $row["rd_comment"] . '</small></div>';
-                                    } else if ($row["rd_apply_status"] == 'Approve') {
-                                        echo '<div class="text-success">' . $row["rd_apply_status"] . '</div>';
-                                    } else {
-                                        echo '<div class="text-info">' . $row["rd_apply_status"] . '</div>';
-                                    }
-                                    ?>
-
+                                    <?php echo $list["type"]; ?><br>
+                                    <small class="text-muted"><?php echo $list["vehicleRegistrationNo"]; ?></small>
                                 </td>
-                                <td>
-                                    <?php
-                                    if ($row["rd_apply_status"] != 'Approve') {
-                                        echo '<a href="apply?act=update&id=' . $row['vd_id'] . '">Update</a><br>';
-                                        echo '<a href="view?id=' . $row['vd_id'] . '">View</a><br>';
-                                        echo '<a href="apply?act=delete&id=' . $row['vd_id'] . '">Delete</a><br>';
-                                    } else {
-                                        echo '<a href="system/action?id=' . $row['vd_id'] . '&data=download">Download Sticker</a><br>';
-                                    }
-                                    ?>
-                                </td>
+                                <td><?php echo $list["demerit"]; ?> </td>
+                                <td><?php echo $list["location"]; ?> </td>
+                                <td><?php echo $list["date"]; ?> </td>
+                                <td><?php echo $list["status"]; ?></td>
                             </tr>
-
                     <?php }
                     } else {
                         echo '<tr><td colspan="6">No violation found.</td></tr>';
