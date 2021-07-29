@@ -41,28 +41,49 @@ class Admin_Model extends CI_Model
     {
     }
 
-    public function search_application_model()
+    public function search_application_model($query)
+    {
+        $this->db->select('*');
+        $this->db->from('applications');
+        $this->db->join('vehicles', 'vehicles.vehicleID = applications.vehicleID');
+        $this->db->like('vehicles.vehicleRegistrationNo', $query, 'after');  
+        return $this->db->get()->result_array();
+    }
+
+    public function approve_application_model($id)
+    {
+        $data = array(
+            'status' => 'Approve'
+        );
+
+        $this->db->where('applicationID', $id);
+        return $this->db->update('applications', $data);
+    }
+
+    public function reject_application_model($id)
+    {
+        $data = array(
+            'status' => 'Reject'
+        );
+
+        $this->db->where('applicationID', $id);
+        return $this->db->update('applications', $data);
+    }
+
+    public function search_violation_model($query)
+    {
+        $data = array(
+            'status' => 'Reject'
+        );
+
+        $this->db->where('applicationID', $id);
+    }
+
+    public function pay_violation_model($id)
     {
     }
 
-    public function approve_application_model()
+    public function remove_violation_model($id)
     {
     }
-
-    public function reject_application_model()
-    {
-    }
-
-    public function search_violation_model()
-    {
-    }
-
-    public function pay_violation_model()
-    {
-    }
-
-    public function remove_violation_model()
-    {
-    }
-
 }

@@ -65,31 +65,52 @@ class Admin_Controller extends CI_Controller
         return $this->Admin_Model->view_violation_list_model();
     }
 
-    public function delete_user()
+    public function delete_user($id)
     {
     }
 
     public function search_application()
     {
+        $query = $this->input->post('search');
+        $data['application_list'] = $this->Admin_Model->search_application_model($query);
+
+        $this->load->view('admin/templates/Header');
+        $this->load->view('admin/templates/Navigation');
+        $this->load->view('admin/Application_List_View', $data);
+        $this->load->view('admin/templates/Footer');
     }
 
-    public function approve_application()
+    public function approve_application($id)
     {
+        if ($this->Admin_Model->approve_application_model($id) !== false) {
+            $this->session->set_tempdata('notice', 'Application request has been approved.', 1);
+            $this->index('applications');
+        } else {
+            $this->session->set_tempdata('error', 'Failed to approve application request.', 1);
+            $this->index('applications');
+        }
     }
 
-    public function reject_application()
+    public function reject_application($id)
     {
+        if ($this->Admin_Model->reject_application_model($id) !== false) {
+            $this->session->set_tempdata('notice', 'Application request has been rejected.', 1);
+            $this->index('applications');
+        } else {
+            $this->session->set_tempdata('error', 'Failed to reject application request.', 1);
+            $this->index('applications');
+        }
     }
 
     public function search_violation()
     {
     }
 
-    public function pay_violation()
+    public function pay_violation($id)
     {
     }
 
-    public function remove_violation()
+    public function remove_violation($id)
     {
     }
 }
