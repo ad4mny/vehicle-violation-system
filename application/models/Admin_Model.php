@@ -13,6 +13,10 @@ class Admin_Model extends CI_Model
 
     public function view_application_list_model()
     {
+        $this->db->select('*');
+        $this->db->from('applications');
+        $this->db->join('vehicles', 'vehicles.vehicleID = applications.vehicleID');
+        return $this->db->get()->result_array();
     }
 
     public function view_application_by_id_model()

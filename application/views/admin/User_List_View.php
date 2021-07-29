@@ -20,7 +20,7 @@
                     <th>ID</th>
                     <th>Address</th>
                     <th>Phone</th>
-                    <th>Action</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <?php
