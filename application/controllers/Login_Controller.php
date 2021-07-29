@@ -34,7 +34,7 @@ class Login_Controller extends CI_Controller
 
 			$this->session->set_userdata('userid', $return['userID']);
 			$this->session->set_userdata('name', $return['fullName']);
-			$this->session->set_userdata('status', $return['status']);
+			$this->session->set_userdata('status', $return['role']);
 
 			switch ($this->session->userdata('status')) {
 				case 'Admin':
