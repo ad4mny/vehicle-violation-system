@@ -50,9 +50,14 @@ class Admin_Controller extends CI_Controller
         return $this->Admin_Model->view_application_list_model();
     }
 
-    public function view_application_by_id()
+    public function view_application_by_id($id)
     {
-        return $this->Admin_Model->view_application_by_id_model();
+        $data['application_data'] = $this->Admin_Model->view_application_by_id_model($id);
+
+        $this->load->view('admin/templates/Header');
+        $this->load->view('admin/templates/Navigation');
+        $this->load->view('admin/Application_View', $data);
+        $this->load->view('admin/templates/Footer');
     }
 
     public function view_violation_list()

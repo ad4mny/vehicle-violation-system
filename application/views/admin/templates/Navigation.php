@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <span class="navbar-brand ps-3">Saman-On-The-Go UMP Management Dashboard</span>
-    <div class="ms-auto mt-2">
+    <div class="ms-auto mt-2 pe-3">
         <a href="<?php echo base_url(); ?>logout" class="text-danger" onclick="return confirm('Logout?');"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 </nav>

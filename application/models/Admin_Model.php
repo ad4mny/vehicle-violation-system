@@ -19,8 +19,14 @@ class Admin_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function view_application_by_id_model()
+    public function view_application_by_id_model($id)
     {
+        $this->db->select('*');
+        $this->db->from('applications');
+        $this->db->join('vehicles', 'vehicles.vehicleID = applications.vehicleID');
+        $this->db->join('users', 'vehicles.userID = users.userID');
+        $this->db->where('applicationID', $id);
+        return $this->db->get()->row_array();
     }
 
     public function view_violation_list_model()
