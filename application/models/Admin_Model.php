@@ -5,6 +5,10 @@ class Admin_Model extends CI_Model
 {
     public function view_user_list_model()
     {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('role !=', 'Admin');
+        return $this->db->get()->result_array();
     }
 
     public function view_application_list_model()

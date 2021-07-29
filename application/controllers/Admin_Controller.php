@@ -14,19 +14,23 @@ class Admin_Controller extends CI_Controller
     public function index($page = 'login')
     {
         $this->load->view('admin/templates/Header');
+        $this->load->view('admin/templates/Navigation');
 
         switch ($page) {
             case 'dashboard':
                 $this->load->view('admin/Dashboard_View');
                 break;
             case 'users':
-                $this->load->view('admin/User_List_View');
+                $data['user_list'] = $this->view_user_list();
+                $this->load->view('admin/User_List_View', $data);
                 break;
             case 'applications':
-                $this->load->view('admin/Application_List_View');
+                $data['application_list'] = $this->view_application_list();
+                $this->load->view('admin/Application_List_View', $data);
                 break;
             case 'violations':
-                $this->load->view('admin/Violation_List_View');
+                $data['violation_list'] = $this->view_violation_list();
+                $this->load->view('admin/Violation_List_View', $data);
                 break;
             default:
                 $this->load->view('users/Login_View');
@@ -38,18 +42,22 @@ class Admin_Controller extends CI_Controller
 
     public function view_user_list()
     {
+        return $this->Admin_Model->view_user_list_model();
     }
 
     public function view_application_list()
     {
+        return $this->Admin_Model->view_application_list_model();
     }
 
     public function view_application_by_id()
     {
+        return $this->Admin_Model->view_application_by_id_model();
     }
 
     public function view_violation_list()
     {
+        return $this->Admin_Model->view_violation_list_model();
     }
 
     public function delete_user()
