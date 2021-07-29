@@ -25,6 +25,10 @@ class Admin_Model extends CI_Model
 
     public function view_violation_list_model()
     {
+        $this->db->select('*');
+        $this->db->from('violations');
+        $this->db->join('vehicles', 'vehicles.vehicleID = violations.vehicleID');
+        return $this->db->get()->result_array();
     }
 
     public function delete_user_model()

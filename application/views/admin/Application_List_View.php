@@ -61,7 +61,7 @@
                     <?php
                         }
                     } else {
-                        echo '<tr class="row p-3 bg-white border-bottom text-uppercase"><td class="col">No application found.</td></td>';
+                        echo '<tr><td colspan="5">No application found.</td></td>';
                     }
                     ?>
                 </tbody>
