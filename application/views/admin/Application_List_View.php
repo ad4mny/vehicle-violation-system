@@ -4,7 +4,7 @@
         <div class="col-4 offset-4">
             <form method="post" action="<?php echo base_url(); ?>admin/applications/search">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search registration number..">
+                    <input type="text" name="search" class="form-control" placeholder="Search vehicle registration number..">
                     <button type="submit" class="btn btn-primary" name="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -53,7 +53,7 @@
                                 <td class="text-center">
                                     <?php
                                     if ($list["status"] != 'Approve') {
-                                        echo ' <a href="' . base_url() . 'admin/applications/' . $list['userID'] . '" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+                                        echo ' <a href="' . base_url() . 'admin/applications/' . $list['applicationID'] . '" class="btn btn-primary btn-sm"><i class="fas fa-eye fa-fw"></i></a>';
                                     }
                                     ?>
                                 </td>

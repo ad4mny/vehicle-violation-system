@@ -36,7 +36,7 @@
                                 <td><?php echo $list["phone"]; ?></td>
                                 <td class="text-center">
                                     <a href="<?php echo base_url() . 'admin/users/delete/' . $list['userID']; ?>" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash fa-fw"></i>
                                     </a>
                                 </td>
                             </tr>

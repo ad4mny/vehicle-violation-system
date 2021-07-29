@@ -4,7 +4,7 @@
         <div class="col-4 offset-4">
             <form method="post" action="<?php echo base_url(); ?>admin/violations/search">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search registration number..">
+                    <input type="text" name="search" class="form-control" placeholder="Search vehicle registration number..">
                     <button type="submit" class="btn btn-primary" name="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -49,11 +49,11 @@
                                 </td>
                                 <td class="text-center">
                                     <?php
-                                    if ($list["status"] != 'Not Paid') {
-                                        echo '<a href="' . base_url() . 'admin/violations/pay/' . $list['violationID'] . '" class="btn btn-success btn-sm"><i class="fas fa-dollar-sign"></i></a>';
+                                    if ($list["status"] == 'Not Paid') {
+                                        echo '<a href="' . base_url() . 'admin/violations/pay/' . $list['violationID'] . '" class="btn btn-success btn-sm"><i class="fas fa-dollar-sign fa-fw"></i></a>';
                                     }
                                     ?>
-                                    <a href="<?php echo base_url();?>admin/violations/pay/<?php echo $list['violationID']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                    <a href="<?php echo base_url();?>admin/violations/pay/<?php echo $list['violationID']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-fw"></i></a>
                                 </td>
                             </tr>
                     <?php
