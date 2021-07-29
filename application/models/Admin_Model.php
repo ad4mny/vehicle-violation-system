@@ -37,8 +37,10 @@ class Admin_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function delete_user_model()
+    public function delete_user_model($id)
     {
+        $this->db->where('userID', $id);
+        return $this->db->delete('users');
     }
 
     public function search_application_model($query)
@@ -72,18 +74,26 @@ class Admin_Model extends CI_Model
 
     public function search_violation_model($query)
     {
-        $data = array(
-            'status' => 'Reject'
-        );
-
-        $this->db->where('applicationID', $id);
+        $this->db->select('*');
+        $this->db->from('violations');
+        $this->db->join('vehicles', 'vehicles.vehicleID = violations.vehicleID');
+        $this->db->like('vehicles.vehicleRegistrationNo', $query, 'after');  
+        return $this->db->get()->result_array();
     }
 
     public function pay_violation_model($id)
     {
+        $data = array(
+            'status' => 'Paid'
+        );
+
+        $this->db->where('violationID', $id);
+        return $this->db->update('violations', $data);
     }
 
     public function remove_violation_model($id)
     {
+        $this->db->where('violationID', $id);
+        return $this->db->delete('violations');
     }
 }

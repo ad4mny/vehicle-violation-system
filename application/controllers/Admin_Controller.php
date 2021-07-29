@@ -67,6 +67,13 @@ class Admin_Controller extends CI_Controller
 
     public function delete_user($id)
     {
+        if ($this->Admin_Model->delete_user_model($id) !== false) {
+            $this->session->set_tempdata('notice', 'User has been deleted.', 1);
+            redirect(base_url() . 'admin/users');
+        } else {
+            $this->session->set_tempdata('error', 'Failed to delete the user.', 1);
+            redirect(base_url() . 'admin/users');
+        }
     }
 
     public function search_application()
@@ -84,10 +91,10 @@ class Admin_Controller extends CI_Controller
     {
         if ($this->Admin_Model->approve_application_model($id) !== false) {
             $this->session->set_tempdata('notice', 'Application request has been approved.', 1);
-            $this->index('applications');
+            redirect(base_url() . 'admin/applications');
         } else {
             $this->session->set_tempdata('error', 'Failed to approve application request.', 1);
-            $this->index('applications');
+            redirect(base_url() . 'admin/applications');
         }
     }
 
@@ -95,22 +102,43 @@ class Admin_Controller extends CI_Controller
     {
         if ($this->Admin_Model->reject_application_model($id) !== false) {
             $this->session->set_tempdata('notice', 'Application request has been rejected.', 1);
-            $this->index('applications');
+            redirect(base_url() . 'admin/applications');
         } else {
             $this->session->set_tempdata('error', 'Failed to reject application request.', 1);
-            $this->index('applications');
+            redirect(base_url() . 'admin/applications');
         }
     }
 
     public function search_violation()
     {
+        $query = $this->input->post('search');
+        $data['violation_list'] = $this->Admin_Model->search_violation_model($query);
+
+        $this->load->view('admin/templates/Header');
+        $this->load->view('admin/templates/Navigation');
+        $this->load->view('admin/Violation_List_View', $data);
+        $this->load->view('admin/templates/Footer');
     }
 
     public function pay_violation($id)
     {
+        if ($this->Admin_Model->pay_violation_model($id) !== false) {
+            $this->session->set_tempdata('notice', 'Violation has been paid.', 1);
+            redirect(base_url() . 'admin/violations');
+        } else {
+            $this->session->set_tempdata('error', 'Failed to mark violation as paid.', 1);
+            redirect(base_url() . 'admin/violations');
+        }
     }
 
     public function remove_violation($id)
     {
+        if ($this->Admin_Model->remove_violation_model($id) !== false) {
+            $this->session->set_tempdata('notice', 'Violation has been remove and canceled.', 1);
+            redirect(base_url() . 'admin/violations');
+        } else {
+            $this->session->set_tempdata('error', 'Failed to remove violation.', 1);
+            redirect(base_url() . 'admin/violations');
+        }
     }
 }
