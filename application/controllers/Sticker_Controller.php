@@ -17,27 +17,23 @@ class Sticker_Controller extends CI_Controller
         $this->load->view('users/templates/Navigation');
 
         if ($page === 'apply') {
-            
+
             $data['user_data'] = $this->fetch_profile();
             $this->load->view('users/Application_Form', $data);
-
         } else if ($page === 'view') {
 
             $data['user_data'] = $this->fetch_profile();
             $data['sticker_data'] = $this->view_sticker($id);
             $this->load->view('users/Sticker_View', $data);
-
         } else if ($page === 'update') {
 
             $data['user_data'] = $this->fetch_profile();
             $data['sticker_data'] = $this->view_sticker($id);
             $this->load->view('users/Update_Application_Form', $data);
-
         } else {
 
             $data['sticker_list'] = $this->view_sticker_list();
             $this->load->view('users/Sticker_List_View', $data);
-
         }
 
         $this->load->view('users/templates/Footer');
@@ -135,6 +131,25 @@ class Sticker_Controller extends CI_Controller
     public function view_sticker_list()
     {
         return $this->Sticker_Model->view_sticker_list_model();
+    }
+    public function download_sticker($id)
+    {
+        $sticker = "./assets/upload/vehicle-sticker/" . $id . ".png";;
+
+        if (file_exists($sticker)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . basename($sticker) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($sticker));
+            readfile($sticker);
+            exit;
+        } else {
+            $this->session->set_tempdata('error', 'Failed to download your vehicle qr coded sticker, please contact UMP Helpdesk.', 1);
+            redirect(base_url() . 'sticker');
+        }
     }
 
     public function fetch_profile()
