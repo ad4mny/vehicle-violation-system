@@ -6,7 +6,7 @@ class Sticker
 {
 	public function generate($data)
 	{
-		$img_path = "tst.png";
+		$img_path = "./assets/upload/vehicle-sticker/" . $data . ".png";
 		QRcode::png($data, $img_path, 'H', 10);
 	}
 }
