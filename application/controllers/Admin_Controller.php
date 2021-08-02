@@ -9,6 +9,7 @@ class Admin_Controller extends CI_Controller
         parent::__construct();
         $this->authentication->verify_login();
         $this->load->model('Admin_Model');
+        $this->load->library('sticker');
     }
 
     public function index($page = 'login')
@@ -89,6 +90,10 @@ class Admin_Controller extends CI_Controller
 
     public function approve_application($id)
     {
+        $this->sticker->generate($id);
+
+        echo '<img src="' . base_url() . 'tes.png" />';
+
         if ($this->Admin_Model->approve_application_model($id) !== false) {
             $this->session->set_tempdata('notice', 'Application request has been approved.', 1);
             redirect(base_url() . 'admin/applications');
