@@ -29,3 +29,10 @@ $route['admin/applications/reject/(:num)'] = 'Admin_Controller/reject_applicatio
 $route['admin/violations/search'] = 'Admin_Controller/search_violation';
 $route['admin/violations/pay/(:num)'] = 'Admin_Controller/pay_violation/$1';
 $route['admin/violations/remove/(:num)'] = 'Admin_Controller/remove_violation/$1';
+
+// API 
+$route['api/get_login'] = 'Login_Controller/login_api';
+$route['api/get_violation_list'] = 'Admin_Controller/view_violation_list_api';
+$route['api/get_vehicle_list'] = 'Admin_Controller/view_application_list_api';
+$route['api/get_vehicle_info'] = 'Admin_Controller/view_application_by_id_api';
+$route['api/set_summon'] = 'Admin_Controller/set_summon_api';

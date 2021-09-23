@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login_Controller extends CI_Controller
@@ -100,4 +101,21 @@ class Login_Controller extends CI_Controller
 
 		redirect(base_url());
 	}
+
+	// API 
+	public function login_api()
+	{
+		$username = $this->input->post('username');
+		$password = md5($this->input->post('password'));
+
+		$return = $this->Login_Model->log_in_model($username, $password);
+
+		if ($return !== false) {
+
+			echo json_encode($return);
+		} else {
+			echo json_encode(false);
+		}
+	}
+
 }

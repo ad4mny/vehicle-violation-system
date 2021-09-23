@@ -100,4 +100,20 @@ class Admin_Model extends CI_Model
         $this->db->where('violationID', $id);
         return $this->db->delete('violations');
     }
+
+    public function set_summon_model($vehicle_id, $user_id, $staff_id, $violation, $demerit, $location)
+    {
+        $data = array(
+            'userID' => $user_id,
+            'vehicleID' => $vehicle_id,
+            'staffID' => $staff_id,
+            'type' => $violation,
+            'location' => $location,
+            'demerit' => $demerit,
+            'date' => date('H:s:i Y/d/m'),
+            'status' => 'Unpaid'
+        );
+
+        return $this->db->insert('violations', $data);
+    }
 }

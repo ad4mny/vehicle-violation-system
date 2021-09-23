@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_Controller extends CI_Controller
@@ -145,5 +146,61 @@ class Admin_Controller extends CI_Controller
             $this->session->set_tempdata('error', 'Failed to remove violation.', 1);
             redirect(base_url() . 'admin/violations');
         }
+    }
+
+    // API 
+    public function view_violation_list_api()
+    {
+        echo json_encode($this->Admin_Model->view_violation_list_model());
+        exit;
+    }
+
+    public function view_user_list_api()
+    {
+        echo json_encode($this->Admin_Model->view_user_list_model());
+        exit;
+    }
+
+    public function view_application_list_api()
+    {
+        echo json_encode($this->Admin_Model->view_application_list_model());
+        exit;
+    }
+
+    public function view_application_by_id_api()
+    {
+        $id = $this->input->post('sticker_id');
+        echo json_encode($this->Admin_Model->view_application_by_id_model($id));
+        exit;
+    }
+
+    public function set_summon_api()
+    {
+        $user_id = $this->input->post('user_id');
+        $vehicle_id = $this->input->post('vehicle_id');
+        $staff_id = $this->input->post('staff_id');
+        $violation = $this->input->post('violation');
+        $location = $this->input->post('location');
+
+        switch ($violation) {
+            case 'Cause accident':
+                $demerit = 500;
+                break;
+            case 'Parking violation':
+                $demerit = 400;
+                break;
+            case 'No sticker displayed':
+                $demerit = 300;
+                break;
+            case 'Not wearing seatbelt/helmet':
+                $demerit = 200;
+                break;
+            default:
+                $demerit = 0;
+                break;
+        }
+
+        echo json_encode($this->Admin_Model->set_summon_model($vehicle_id, $user_id, $staff_id, $violation, $demerit, $location));
+        exit;
     }
 }
