@@ -8,13 +8,13 @@ class Admin_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->authentication->verify_login();
         $this->load->model('Admin_Model');
         $this->load->library('sticker');
     }
 
     public function index($page = 'login')
     {
+        $this->authentication->verify_login();
         $this->load->view('admin/templates/Header');
         $this->load->view('admin/templates/Navigation');
 

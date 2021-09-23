@@ -6,12 +6,12 @@ class Violation_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->authentication->verify_login();
         $this->load->model('Violation_Model');
     }
 
     public function index($page = null, $id = null)
 	{
+        $this->authentication->verify_login();
         $data['violation_list'] = $this->view_violation_list();
 
 		$this->load->view('users/templates/Header');
