@@ -31,5 +31,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 ## user defined
-# /assets/upload/vehicle-grant*.png
-# /assets/upload/vehicle-sticker/*.png
+/assets/upload/vehicle-grant/*.png
+/assets/upload/vehicle-sticker/*.png
