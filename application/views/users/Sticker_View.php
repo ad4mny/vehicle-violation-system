@@ -80,10 +80,10 @@
                 <div class="col-6 text-center py-3">
                     <div class="form-group ">
                         <small>Vehicle Sticker</small>
-                        <?php if ($sticker_data['vehicleStickerPath'] !== NULL) {
+                        <?php if (isset($sticker_data['vehicleStickerPath']) && $sticker_data['vehicleStickerPath'] !== NULL) {
                             echo '<img src="' . base_url() . 'assets/upload/vehicle-sticker/' . $sticker_data['vehicleStickerPath'] . '" class="img-fluid" alt="No Image">';
                         } else {
-                            echo '<img src="https://dummyimage.com/640x640/f0f0f0/aaa" class="img-fluid" alt="No Image">';
+                            echo '<img src="https://dummyimage.com/640x320/f0f0f0/aaa" class="img-fluid" alt="No Image">';
                         } ?>
                     </div>
                 </div>
