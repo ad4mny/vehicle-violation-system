@@ -21,7 +21,6 @@
                     <th>Location</th>
                     <th>Datetime</th>
                     <th>Status</th>
-                    <th></th>
                 </thead>
                 <tbody>
                     <?php
@@ -41,19 +40,11 @@
                                 <td>
                                     <?php
                                     if ($list["status"] == 'Paid') {
-                                        echo '<div class="text-success">' . $list["status"] . '</div>';
+                                        echo '<div>' . $list["status"] . '</div>';
                                     } else {
-                                        echo '<div class="text-danger">' . $list["status"] . '</div>';
+                                        echo '<a href="' . base_url() . 'admin/violations/pay/' . $list['violationID'] . '" class="btn btn-success btn-sm"><i class="fas fa-dollar-sign fa-fw"></i> Pay</a>';
                                     }
                                     ?>
-                                </td>
-                                <td class="text-center">
-                                    <?php
-                                    if ($list["status"] == 'Not Paid') {
-                                        echo '<a href="' . base_url() . 'admin/violations/pay/' . $list['violationID'] . '" class="btn btn-success btn-sm"><i class="fas fa-dollar-sign fa-fw"></i></a>';
-                                    }
-                                    ?>
-                                    <a href="<?php echo base_url();?>admin/violations/pay/<?php echo $list['violationID']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-fw"></i></a>
                                 </td>
                             </tr>
                     <?php

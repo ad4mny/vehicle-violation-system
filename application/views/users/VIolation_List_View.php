@@ -17,7 +17,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Violation Detail</th>
-                        <th>Demerit Point</th>
+                        <th>Penalty Point</th>
                         <th>Location</th>
                         <th>Datetime</th>
                         <th>Status</th>
