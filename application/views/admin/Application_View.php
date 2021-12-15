@@ -71,16 +71,6 @@
                 </div>
             </div>
             <div class="col-3 text-center py-3">
-                <div class="form-group ">
-                    <small>Vehicle Sticker</small>
-                    <?php if ($application_data['sticker'] !== NULL) {
-                        echo '<img src="' . base_url() . 'assets/upload/vehicle-sticker/' . $application_data['sticker'] . '" class="img-fluid" alt="No Image">';
-                    } else {
-                        echo '<img src="https://dummyimage.com/640x640/f0f0f0/aaa" class="img-fluid" alt="No Image">';
-                    } ?>
-                </div>
-            </div>
-            <div class="col-3 text-center py-3">
                 <small>Application Action</small><br>
                 <a href="<?php echo base_url(); ?>admin/applications/approve/<?php echo $application_data['applicationID']; ?>" class="btn btn-success btn-sm m-1"><i class="fas fa-check fa-fw"></i> Approve Application</a><br>
                 <a href="<?php echo base_url(); ?>admin/applications/reject/<?php echo $application_data['applicationID']; ?>" class="btn btn-danger btn-sm m-1"><i class="fas fa-times fa-fw"></i> Reject Application</a>
