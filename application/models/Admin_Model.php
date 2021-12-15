@@ -37,6 +37,7 @@ class Admin_Model extends CI_Model
         $this->db->select('*');
         $this->db->from('violations');
         $this->db->join('vehicles', 'vehicles.vehicleID = violations.vehicleID');
+        $this->db->join('users', 'vehicles.userID = users.userID');
         $this->db->order_by('vehicleRegistrationNo');
         return $this->db->get()->result_array();
     }
