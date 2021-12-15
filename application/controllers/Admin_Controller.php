@@ -93,8 +93,6 @@ class Admin_Controller extends CI_Controller
     {
         $this->sticker->generate($id);
 
-        echo '<img src="' . base_url() . 'tes.png" />';
-
         if ($this->Admin_Model->approve_application_model($id) !== false) {
             $this->session->set_tempdata('notice', 'Application request has been approved.', 1);
             redirect(base_url() . 'admin/applications');
