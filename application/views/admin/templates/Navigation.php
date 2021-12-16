@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <span class="navbar-brand ps-3">Saman-On-The-Go UMP Management Dashboard</span>
+    <span class="navbar-brand ps-3">Saman-On-The-GO UMP Vehicle Violation System (SUVSS)</span>
     <div class="ms-auto mt-2 pe-3">
         <a href="<?php echo base_url(); ?>logout" class="text-danger" onclick="return confirm('Logout?');"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
