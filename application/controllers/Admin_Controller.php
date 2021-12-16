@@ -20,7 +20,8 @@ class Admin_Controller extends CI_Controller
 
         switch ($page) {
             case 'dashboard':
-                $this->load->view('admin/Dashboard_View');
+                $data['dashboards'] = $this->get_dashboard_analytic();
+                $this->load->view('admin/Dashboard_View', $data);
                 break;
             case 'users':
                 $data['user_list'] = $this->view_user_list();
@@ -40,6 +41,11 @@ class Admin_Controller extends CI_Controller
         }
 
         $this->load->view('admin/templates/Footer');
+    }
+
+    public function get_dashboard_analytic()
+    {
+        return $this->Admin_Model->get_dashboard_analytic_model();
     }
 
     public function view_user_list()

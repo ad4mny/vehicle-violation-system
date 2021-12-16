@@ -3,6 +3,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_Model extends CI_Model
 {
+    public function get_dashboard_analytic_model()
+    {
+        $data = [];
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('violations');
+        $data['violation'] = $this->db->get()->row_array();
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('violations');
+        $this->db->where('status', 'Paid');
+        $data['paid'] = $this->db->get()->row_array();
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('vehicles');
+        $data['vehicle'] = $this->db->get()->row_array();
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('users');
+        $this->db->where('role !=', 'Admin');
+        $data['user'] = $this->db->get()->row_array();
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('applications');
+        $this->db->where('status', 'Approve');
+        $data['approve'] = $this->db->get()->row_array();
+
+        $this->db->select('COUNT(*) as value');
+        $this->db->from('applications');
+        $this->db->where('status', 'Reject');
+        $data['reject'] = $this->db->get()->row_array();
+
+        return $data;
+    }
+
     public function view_user_list_model()
     {
         $this->db->select('*');
