@@ -153,6 +153,12 @@ class Admin_Controller extends CI_Controller
     }
 
     // API 
+    public function get_dashboard_analytic_api()
+    {
+        echo json_encode($this->Admin_Model->get_dashboard_analytic_model());
+        exit;
+    }
+
     public function view_violation_list_api()
     {
         echo json_encode($this->Admin_Model->view_violation_list_model());
